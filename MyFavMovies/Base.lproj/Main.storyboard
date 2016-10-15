@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w6k-nx-2Ya">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w6k-nx-2Ya">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="134" id="gH3-zf-0Bj" customClass="MovieCell" customModule="MyFavMovies" customModuleProvider="target">
@@ -91,6 +91,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w6k-nx-2Ya" secondAttribute="bottom" id="Ic6-Yt-xUM"/>
+                            <constraint firstItem="w6k-nx-2Ya" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VUt-Uh-7D5"/>
+                            <constraint firstItem="w6k-nx-2Ya" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YH5-Tm-ZGs"/>
+                            <constraint firstAttribute="trailing" secondItem="w6k-nx-2Ya" secondAttribute="trailing" id="ZzN-Lr-5sL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QmF-XD-Bst">
                         <barButtonItem key="rightBarButtonItem" title="Add Movie" id="GRF-zw-x05">
