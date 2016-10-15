@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="134" id="gH3-zf-0Bj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="134" id="gH3-zf-0Bj" customClass="MovieCell" customModule="MyFavMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gH3-zf-0Bj" id="SWt-LH-g89">
@@ -80,14 +80,26 @@
                                                 <constraint firstItem="ZeC-0y-hYB" firstAttribute="trailing" secondItem="SWt-LH-g89" secondAttribute="trailingMargin" id="n4U-Ix-vmz"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.18744488749999999" green="0.61311340830000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="descriptionLbl" destination="mI9-z5-ujR" id="iII-Ly-E21"/>
+                                            <outlet property="linkLbl" destination="ZeC-0y-hYB" id="Ybi-uW-fQg"/>
+                                            <outlet property="movieImg" destination="qbK-ar-FYY" id="wDa-Ax-HAL"/>
+                                            <outlet property="titleLbl" destination="8UB-Dh-3mp" id="hYJ-Pi-X1i"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QmF-XD-Bst"/>
+                    <navigationItem key="navigationItem" id="QmF-XD-Bst">
+                        <barButtonItem key="rightBarButtonItem" title="Add Movie" id="GRF-zw-x05">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="9St-ks-ytc" kind="show" id="e3n-sY-B5h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="w6k-nx-2Ya" id="Rdf-0D-CcL"/>
                     </connections>
@@ -95,6 +107,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1377" y="490"/>
+        </scene>
+        <!--Add new movie!-->
+        <scene sceneID="uEo-Eb-Qxw">
+            <objects>
+                <viewController title="Add new movie!" id="9St-ks-ytc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m65-xJ-rxg"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Gx-Kn-emi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9WC-FF-Ia9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W6x-h6-aZO">
+                                <rect key="frame" x="213" y="79" width="175" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="QPA-17-KTU"/>
+                                    <constraint firstAttribute="width" constant="175" id="mjv-cD-XDt"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-mX-cFV">
+                                <rect key="frame" x="213" y="79" width="175" height="175"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bld-9g-XuU">
+                                <rect key="frame" x="20" y="297" width="560" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXU-Oc-ulw">
+                                <rect key="frame" x="20" y="335" width="560" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IMBD Link" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Knx-kF-8XZ">
+                                <rect key="frame" x="20" y="373" width="560" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idL-fS-xg2">
+                                <rect key="frame" x="241" y="461" width="118" height="51"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.52941176469999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="1OQ-Gg-IEa"/>
+                                    <constraint firstAttribute="width" constant="118" id="Osc-Md-0Xn"/>
+                                </constraints>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sGo-mX-cFV" firstAttribute="height" secondItem="W6x-h6-aZO" secondAttribute="height" id="0pC-4f-LHJ"/>
+                            <constraint firstItem="bld-9g-XuU" firstAttribute="top" secondItem="sGo-mX-cFV" secondAttribute="bottom" constant="43" id="7hi-Lb-aj3"/>
+                            <constraint firstItem="bld-9g-XuU" firstAttribute="trailing" secondItem="9WC-FF-Ia9" secondAttribute="trailingMargin" id="BI2-7l-Onf"/>
+                            <constraint firstItem="EXU-Oc-ulw" firstAttribute="trailing" secondItem="9WC-FF-Ia9" secondAttribute="trailingMargin" id="E2J-qF-3Ov"/>
+                            <constraint firstItem="idL-fS-xg2" firstAttribute="top" secondItem="Knx-kF-8XZ" secondAttribute="bottom" constant="58" id="ECR-nn-tQZ"/>
+                            <constraint firstItem="sGo-mX-cFV" firstAttribute="width" secondItem="W6x-h6-aZO" secondAttribute="width" id="ITE-Jh-zO3"/>
+                            <constraint firstItem="idL-fS-xg2" firstAttribute="centerX" secondItem="9WC-FF-Ia9" secondAttribute="centerX" id="Pcu-Hq-wmy"/>
+                            <constraint firstItem="W6x-h6-aZO" firstAttribute="top" secondItem="m65-xJ-rxg" secondAttribute="bottom" constant="15" id="Qbh-Pk-5bc"/>
+                            <constraint firstItem="Knx-kF-8XZ" firstAttribute="trailing" secondItem="9WC-FF-Ia9" secondAttribute="trailingMargin" id="Rmd-Ji-LgP"/>
+                            <constraint firstItem="sGo-mX-cFV" firstAttribute="centerX" secondItem="W6x-h6-aZO" secondAttribute="centerX" id="Xqs-KK-aGj"/>
+                            <constraint firstItem="sGo-mX-cFV" firstAttribute="centerY" secondItem="W6x-h6-aZO" secondAttribute="centerY" id="YYW-m7-Ge5"/>
+                            <constraint firstItem="EXU-Oc-ulw" firstAttribute="top" secondItem="bld-9g-XuU" secondAttribute="bottom" constant="8" id="czn-nE-Q7B"/>
+                            <constraint firstItem="W6x-h6-aZO" firstAttribute="centerX" secondItem="9WC-FF-Ia9" secondAttribute="centerX" id="dwn-bZ-Hv4"/>
+                            <constraint firstItem="EXU-Oc-ulw" firstAttribute="leading" secondItem="9WC-FF-Ia9" secondAttribute="leadingMargin" id="dz0-9q-EtM"/>
+                            <constraint firstItem="Knx-kF-8XZ" firstAttribute="top" secondItem="EXU-Oc-ulw" secondAttribute="bottom" constant="8" id="eZv-46-lP6"/>
+                            <constraint firstItem="Knx-kF-8XZ" firstAttribute="leading" secondItem="9WC-FF-Ia9" secondAttribute="leadingMargin" id="lHW-sk-HKZ"/>
+                            <constraint firstItem="bld-9g-XuU" firstAttribute="leading" secondItem="9WC-FF-Ia9" secondAttribute="leadingMargin" id="yjF-Em-4tr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z3m-X3-5BS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="490"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Out-WP-sat">
@@ -104,6 +195,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vgN-E9-3ea">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.18039215689999999" green="0.52941176469999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
