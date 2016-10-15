@@ -13,6 +13,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var movieImg: UIImageView!
+    @IBOutlet weak var linkLbl: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,7 @@ class MovieCell: UITableViewCell {
     func configuraton(post: Movie){
         titleLbl.text = post.title
         descriptionLbl.text = post.movieDescription
+        linkLbl.text = post.link
         
     
     }
