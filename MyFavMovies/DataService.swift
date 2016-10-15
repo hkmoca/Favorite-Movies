@@ -19,11 +19,33 @@ class DataService {
     }
     
     func saveMovies() {
-    
+        let moviesData = NSKeyedArchiver.archivedDataWithRootObject(_loadedMovies)
+        NSUserDefaults.standardUserDefaults().setObject(moviesData, forKey: "movies")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
     func loadMovies() {
+        if let moviesData = NSUserDefaults.standardUserDefaults().objectForKey("movies") as? NSData {
+            if let moviesArray = NSKeyedUnarchiver.unarchiveObjectWithData(moviesData) as? [Movie] {
+                _loadedMovies = moviesArray
+            }
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "moviesLoaded", object: nil))
+    }
     
+    func saveImageAndCreatePath(image: UIImage) -> String {
+        let imageData = UIImagePNGRepresentation(image)
+        let imagePath = "image\(NSDate.timeIntervalSinceReferenceDate()).png"
+        let fullPath = documentsPathForFileName(imagePath)
+            imageData?.writeToFile(fullPath, atomically: true)
+        return imagePath
+    }
+    
+    func imageForPath(path: String) -> UIImage? {
+        let fullPath = documentsPathForFileName(path)
+        let image = UIImage(named: fullPath)
+        return image
     }
 
     func addMovies(movie: Movie){
@@ -31,6 +53,12 @@ class DataService {
         saveMovies()
         loadMovies()
     
+    }
+    
+    func documentsPathForFileName(name: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let fullPath = paths[0] as NSString
+        return fullPath.stringByAppendingPathComponent(name)
     }
 
 }
