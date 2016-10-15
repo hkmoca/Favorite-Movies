@@ -21,6 +21,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.onMoviesLoaded(_:)), name: "moviesLoaded", object: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "movieDetails" {
+        let movieDetailView = segue.destinationViewController as? MovieDetailVC
+        let path = tableView.indexPathForSelectedRow
+            movieDetailView?.movie = DataService.instanse.loadedMovies[path!.row]
+        }
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
