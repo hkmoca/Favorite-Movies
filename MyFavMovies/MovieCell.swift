@@ -9,16 +9,29 @@
 import UIKit
 
 class MovieCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var movieImg: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        movieImg.layer.cornerRadius = movieImg.frame.size.width / 2
+        movieImg.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configuraton(post: Movie){
+        titleLbl.text = post.title
+        descriptionLbl.text = post.movieDescription
+        
+    
     }
 
 }
