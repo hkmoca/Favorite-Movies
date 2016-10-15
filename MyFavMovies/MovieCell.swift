@@ -32,6 +32,7 @@ class MovieCell: UITableViewCell {
         titleLbl.text = post.title
         descriptionLbl.text = post.movieDescription
         linkLbl.text = post.link
+        movieImg.image = DataService.instanse.imageForPath(post.imagePath)
         
     
     }
