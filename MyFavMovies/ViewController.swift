@@ -17,6 +17,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         tableView.delegate = self
         tableView.dataSource = self
+        DataService.instanse.loadMovies()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.onMoviesLoaded(_:)), name: "moviesLoaded", object: nil)
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -38,6 +41,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.configuraton(movie)
             return cell
         }
+    }
+    
+    func onMoviesLoaded(notif: AnyObject){
+        tableView.reloadData()
     }
 
 }
