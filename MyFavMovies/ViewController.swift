@@ -24,13 +24,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return DataService.instanse.loadedMovies.count
         
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //if let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell") as? MovieCell {
         
-      //  }
+        let movie = DataService.instanse.loadedMovies[indexPath.row]
+        if let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell") as? MovieCell {
+            cell.configuraton(movie)
+            return cell
+        } else {
+            let cell = MovieCell()
+            cell.configuraton(movie)
+            return cell
+        }
     }
 
 }
