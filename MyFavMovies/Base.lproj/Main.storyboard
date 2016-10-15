@@ -117,7 +117,7 @@
         <!--Add new movie!-->
         <scene sceneID="uEo-Eb-Qxw">
             <objects>
-                <viewController title="Add new movie!" id="9St-ks-ytc" sceneMemberID="viewController">
+                <viewController title="Add new movie!" id="9St-ks-ytc" customClass="AddMovieVC" customModule="MyFavMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m65-xJ-rxg"/>
                         <viewControllerLayoutGuide type="bottom" id="5Gx-Kn-emi"/>
@@ -135,7 +135,10 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-mX-cFV">
                                 <rect key="frame" x="213" y="79" width="175" height="175"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add Pic"/>
+                                <connections>
+                                    <action selector="addPicBtnPressed:" destination="9St-ks-ytc" eventType="touchUpInside" id="Wx7-ng-aMn"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bld-9g-XuU">
                                 <rect key="frame" x="20" y="297" width="560" height="30"/>
@@ -165,6 +168,9 @@
                                 <state key="normal" title="Create">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="createBtnPressed:" destination="9St-ks-ytc" eventType="touchUpInside" id="zt0-vR-gM1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,6 +194,12 @@
                             <constraint firstItem="bld-9g-XuU" firstAttribute="leading" secondItem="9WC-FF-Ia9" secondAttribute="leadingMargin" id="yjF-Em-4tr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descField" destination="EXU-Oc-ulw" id="z5v-Cc-m9N"/>
+                        <outlet property="linkField" destination="Knx-kF-8XZ" id="kZR-pw-tnW"/>
+                        <outlet property="movieImage" destination="W6x-h6-aZO" id="InD-S3-FBL"/>
+                        <outlet property="titleField" destination="bld-9g-XuU" id="PGK-Qd-NaN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3m-X3-5BS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
